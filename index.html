@@ -2,38 +2,55 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>인터랙티브 웹 샘플</title>
+    <title>인터랙티브 웹 페이지 샘플</title>
     <style>
-        body { display: flex; justify-content: center; align-items: center; height: 100vh; flex-direction: column; }
-        
-        /* 상자 기본 스타일 */
-        .box {
-            width: 100px; height: 100px;
-            background-color: skyblue;
-            transition: all 0.5s; /* 부드러운 움직임 효과 */
-            cursor: pointer;
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            transition: background-color 0.5s ease;
+            font-family: sans-serif;
         }
-
-        /* 클릭 시 변경될 스타일 */
-        .box.active {
-            background-color: tomato;
-            transform: rotate(180deg) scale(1.2);
-            border-radius: 50%;
+        /* 호버 효과: 마우스를 올리면 크기가 커지고 색상이 변함 */
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: #3498db;
+            border-radius: 15px;
+            transition: transform 0.3s, background-color 0.3s;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        .box:hover {
+            transform: scale(1.1);
+            background-color: #2980b9;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
 
-    <div class="box" id="myBox"></div>
-    <p>상자를 클릭해보세요!</p>
+    <div class="box">마우스를 올려보세요!</div>
+    <button onclick="changeBg()">배경색 바꾸기</button>
 
     <script>
-        // 자바스크립트로 동작 제어 [4]
-        const box = document.getElementById('myBox');
-        
-        box.addEventListener('click', () => {
-            box.classList.toggle('active'); // 'active' 클래스 추가/제거
-        });
+        // 클릭 이벤트: 버튼을 누를 때마다 배경색 변경
+        function changeBg() {
+            const colors = ['#f1c40f', '#e74c3c', '#2ecc71', '#9b59b6', '#ffffff'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.body.style.backgroundColor = randomColor;
+        }
     </script>
 </body>
 </html>
