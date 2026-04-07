@@ -1,9 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>인터랙티브 웹 샘플</title>
+    <style>
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; flex-direction: column; }
+        
+        /* 상자 기본 스타일 */
+        .box {
+            width: 100px; height: 100px;
+            background-color: skyblue;
+            transition: all 0.5s; /* 부드러운 움직임 효과 */
+            cursor: pointer;
+        }
+
+        /* 클릭 시 변경될 스타일 */
+        .box.active {
+            background-color: tomato;
+            transform: rotate(180deg) scale(1.2);
+            border-radius: 50%;
+        }
+    </style>
+</head>
 <body>
 
-<h1>My First Heading</h1>
-<p>My first paragraph.</p>
+    <div class="box" id="myBox"></div>
+    <p>상자를 클릭해보세요!</p>
 
+    <script>
+        // 자바스크립트로 동작 제어 [4]
+        const box = document.getElementById('myBox');
+        
+        box.addEventListener('click', () => {
+            box.classList.toggle('active'); // 'active' 클래스 추가/제거
+        });
+    </script>
 </body>
 </html>
